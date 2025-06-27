@@ -38,21 +38,16 @@ jobs:
       run: trivy fs --format table -o fs-reports.json .
     - name: Gitleaks Code Scan
       run: gitleaks detect source . -r gitleaks-reports.json -f json
-    Test:
-      runs-on: self-hosted
+  Test:
+    runs-on: self-hosted
 
-      steps:
-      - uses: actions/checkout@v4
-      - name: Set up JDK 17
-      uses: actions/setup-java@v4
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: maven
-      - name: test the code
-        run: mvn test
-
-      
-
-      
-
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up JDK 17
+    uses: actions/setup-java@v4
+    with:
+      java-version: '17'
+      distribution: 'temurin'
+      cache: maven
+    - name: test the cod
+      run: mvn test
